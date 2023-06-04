@@ -7,6 +7,8 @@ const methodOverride = require('method-override')
 
 const Product = require('./models/product');
 
+const categories = ['fruit', 'vegetables', 'dairy', 'baked goods']
+
 // Parse extended urls and convert into a JavaScript object
 app.use(express.urlencoded({ extended: true }))
 
@@ -25,7 +27,7 @@ app.get('/', (req, res) => {
 app.get('/products/:id/edit', async (req, res) => {
   const { id } = req.params;
   const product = await Product.findById(id)
-  res.render('products/edit', { product });
+  res.render('products/edit', { product, categories });
 })
 
 app.put('/products/:id', async (req, res) => {
@@ -37,7 +39,7 @@ app.put('/products/:id', async (req, res) => {
 })
 
 app.get('/products/new', (req, res) => {
-  res.render('products/new');
+  res.render('products/new', { categories });
 })
 
 app.post('/products', async (req, res) => {
@@ -45,15 +47,6 @@ app.post('/products', async (req, res) => {
   await newProduct.save();
   res.redirect('/products');
 })
-
-
-// app.get('/products/new', (req, res) => {
-//   res.render('products/new', {  });
-// })
-
-
-
-
 
 app.get('/products', async (req, res) => {
   const products = await Product.find({})

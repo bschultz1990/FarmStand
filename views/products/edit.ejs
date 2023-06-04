@@ -16,15 +16,14 @@
 
       <label for="category">Product Category</label>
       <select name="category" id="category">
-        <option value="select">--select--</option>
-        <option value="fruit">fruit</option>
-        <option value="vegetable">vegetable</option>
-        <option value="dairy">dairy</option>
+        <% for (let category of categories) {%>
+          <option value="<%= category %>" <%= product.category === category ? 'selected': '' %> ><%= category %></option>
+        <% } %>
       </select>
+      <button>
+        <a href="/products/<%= product._id %>">Product Page</a>
+      </button>
       <button>Submit</button>
     </form>
-    <button>
-      <a href="/products/<%= product._id %>">All Products</a>
-    </button>
   </body>
 </html>
