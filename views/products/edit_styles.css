@@ -1,3 +1,21 @@
-body {
-  background-color: pink;
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+}
+
+form label, form button {
+  font-weight: bold;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+#button-section {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }

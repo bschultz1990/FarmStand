@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/products/_reset.css">
     <title><%= product.name %></title>
   </head>
   <body>
@@ -11,7 +12,11 @@
       <li>Price: <%= product.price %></li>
       <li>Category: <%= product.category %></li>
     </ul>
-    <a href="/products/<%= product._id %>/edit">Edit</a>
-    <a href="/products">All Products</a>
+    <button>
+      <a href="/products/<%= product._id %>/edit">Edit</a>
+    </button>
+    <button>
+      <a href="/products">All Products</a>
+    </button>
   </body>
 </html>

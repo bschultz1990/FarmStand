@@ -15,6 +15,9 @@ app.use(express.urlencoded({ extended: true }))
 // Override weird requests
 app.use(methodOverride('_method'))
 
+// Set up static file serving before routes:
+app.use(express.static('views'));
+
 // Set view engine and path.
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

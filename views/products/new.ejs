@@ -3,24 +3,34 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/products/_reset.css">
+    <link type="text/css" rel="stylesheet" href="/products/edit_styles.css">
     <title>Add a Product</title>
   </head>
   <body>
     <h1>Add New Product</h1> 
     <form action="/products" method="post">
-      <label for="name">Product Name</label>
-      <input type="text" name="name" id="name" placeholder="product name">
+      <section class="form-row">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="product name">
+      </section>
 
-      <label for="price">Product Price</label>
-      <input type="number" name="price" id="price" placeholder="product price">
+      <section class="form-row">
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" placeholder="product price">
+      </section>
 
-      <label for="category">Product Category</label>
-      <select name="category" id="category">
-        <% for (let category of categories) {%>
-          <option value="<%= category %>"><%= category %></option>
-        <% } %>
-      </select>
-      <button>Submit</button>
+      <section class="form-row">
+        <label for="category">Category</label>
+        <select name="category" id="category">
+          <% for (let category of categories) {%>
+            <option value="<%= category %>"><%= category %></option>
+          <% } %>
+        </select>
+      </section>
+      <section id = "button-section">
+        <button>Submit</button>
+      </section>
     </form>
   </body>
 </html>
