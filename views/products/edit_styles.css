@@ -15,7 +15,6 @@ form label, form button {
 
 #button-section {
   margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   gap: 1rem;
 }

@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 
 // Set paths
 app.get('/', (req, res) => {
-  res.send('TESTING');
+  res.render('products/home')
 })
 
 app.get('/products/:id/edit', async (req, res) => {
@@ -52,9 +52,14 @@ app.post('/products', async (req, res) => {
 })
 
 app.get('/products', async (req, res) => {
-  const products = await Product.find({})
-  // console.log(products)
-  res.render('products/index', { products })
+  const { category } = req.query;
+  if (category) {
+    const products = await Product.find({category: category})
+    res.render('products/index', { products, category })
+  } else {
+    const products = await Product.find({});
+    res.render('products/index', { products, category: "All" });
+  }
 })
 
 app.get('/products/:id', async (req, res) => {
@@ -62,6 +67,12 @@ app.get('/products/:id', async (req, res) => {
   const product = await Product.findById(id)
   // console.log(product);
   res.render('products/show', { product });
+})
+
+app.delete('/products/:id', async (req, res) => {
+  const { id } = req.params;
+  const deletedProduct = await Product.findByIdAndDelete(id);
+  res.redirect('/products');
 })
 
 // Listen on port 3000
